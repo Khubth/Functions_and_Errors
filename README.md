@@ -62,7 +62,7 @@ contract SmartContract {
 # Interacting with the Smart Contract
 5. Interacting with the Deployed Contract:
 
- 1.  After deployment, the contract will appear in the "Deployed Contracts" section.
+  1.  After deployment, the contract will appear in the "Deployed Contracts" section.
   2. Expand the deployed contract to see the available functions.
 
 # Execute Functions:
