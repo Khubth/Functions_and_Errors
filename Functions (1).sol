@@ -47,7 +47,7 @@ contract CollegeAttendance {
         requiredAttendance = _newRequiredAttendance;
     }
 
-    function revertExae() public pure {
+    function revertExample() public pure {
         revert("This is an example of revert");
     }
 }
