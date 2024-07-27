@@ -47,7 +47,9 @@ contract CollegeAttendance {
     }
 
     function markAttendance() public onlyStudent {
+        uint previousCount = students[msg.sender].attendanceCount;
         students[msg.sender].attendanceCount++;
+        assert(students[msg.sender].attendanceCount > previousCount);
     }
 
     function checkEligibility(address _studentAddress) public view returns (bool) {
@@ -60,12 +62,20 @@ contract CollegeAttendance {
         requiredAttendance = _newRequiredAttendance;
     }
 
+    function resetAttendance(address _studentAddress) public onlyOwner {
+        require(isStudent[_studentAddress], "Invalid student");
+        uint previousCount = students[_studentAddress].attendanceCount;
+        students[_studentAddress].attendanceCount = 0;
+        assert(students[_studentAddress].attendanceCount == 0 && previousCount > 0);
+    }
+
     function revertExample(uint attendance) public view {
         if (attendance < requiredAttendance) {
             revert("Attendance is below the required threshold");
         }
     }
 }
+
 # Compiling the Contract
 3. Compile the Contract:
    1. Go to the "Solidity Compiler" tab in Remix.
