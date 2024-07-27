@@ -47,7 +47,9 @@ contract CollegeAttendance {
         requiredAttendance = _newRequiredAttendance;
     }
 
-    function revertExample() public pure {
-        revert("This is an example of revert");
+    function revertExample(uint attendance) public view {
+        if (attendance < requiredAttendance) {
+            revert("Attendance is below the required threshold");
+        }
     }
 }
