@@ -60,8 +60,10 @@ contract CollegeAttendance {
         requiredAttendance = _newRequiredAttendance;
     }
 
-    function revertExample() public pure {
-        revert("This is an example of revert");
+    function revertExample(uint attendance) public view {
+        if (attendance < requiredAttendance) {
+            revert("Attendance is below the required threshold");
+        }
     }
 }
 # Compiling the Contract
@@ -88,7 +90,7 @@ contract CollegeAttendance {
  2. markAttendance Function: Allows a student to mark their attendance.
  3. checkEligibility Function: Checks if a student's attendance meets the required threshold.
  4. updateRequiredAttendance Function: Updates the required attendance (only by the owner).
- 5. revertExae Function: Demonstrates a revert with a custom error message
+ 5. revertExample Function: Demonstrates a revert with a custom error message
 
 # Error Handling Overview
 require():
